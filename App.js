@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, Image } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,7 +12,7 @@ import Question from './view/question';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function MyTabs() {
+function Main() {
   const Diary = views.Diary;
   const Community = views.Community;
   const HealthInfo = views.HealthInfo;
@@ -30,11 +30,71 @@ function MyTabs() {
         style: { backgroundColor: '#fff' },
       }}
     >
-      <Tab.Screen name="하루공유" component={Diary} />
-      <Tab.Screen name="커뮤니티" component={Community} />
-      <Tab.Screen name="건강정보" component={HealthInfo} />
-      <Tab.Screen name="의료/후원" component={MedicalSponsorship} />
-      <Tab.Screen name="내정보" component={MyPage} />
+      <Tab.Screen
+        name="하루공유"
+        component={Diary}
+        options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              if(focused){
+                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
+              } else {
+                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
+              }
+            }
+        }}
+      />
+      <Tab.Screen
+        name="커뮤니티"
+        component={Community}
+        options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              if(focused){
+                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
+              } else {
+                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
+              }
+            }
+        }}
+      />
+      <Tab.Screen
+        name="건강정보"
+        component={HealthInfo}
+        options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              if(focused){
+                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
+              } else {
+                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
+              }
+            }
+        }}
+      />
+      <Tab.Screen
+        name="의료/후원"
+        component={MedicalSponsorship}
+        options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              if(focused){
+                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
+              } else {
+                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
+              }
+            }
+        }}
+      />
+      <Tab.Screen
+        name="내정보"
+        component={MyPage}
+        options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              if(focused){
+                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
+              } else {
+                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
+              }
+            }
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -42,12 +102,12 @@ function MyTabs() {
 export default function App() {
     return (
         <SafeAreaProvider>
-            <NavigationContainer>
-              <Stack.Navigator initialRouteName='MyTabs'>
-                <Stack.Screen name='MyTabs' component={MyTabs} />
-                <Stack.Screen name='Question' component={Question} />
-              </Stack.Navigator>
-            </NavigationContainer>
+              <NavigationContainer>
+                    <Stack.Navigator screenOptions={{ headerShown: false }} >
+                      <Stack.Screen name='Main' component={Main} />
+                      <Stack.Screen name='Question' component={Question} />
+                    </Stack.Navigator>
+              </NavigationContainer>
         </SafeAreaProvider>
     );
 }
