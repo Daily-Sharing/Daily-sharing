@@ -26,7 +26,7 @@ const DailyList = () => {
             <View style={styles.infoBox}>
                 <View style={styles.userinfoBox}>
                     <View>
-                        <Image style={styles.userProfileImg} source={require('../assets/1.jpg')} resizeMode='cover' />
+                        <Image style={styles.userProfileImg} source={require('../../assets/1.jpg')} resizeMode='cover' />
                     </View>
                     <View>
                         <Text>닉네임</Text>
@@ -41,7 +41,7 @@ const DailyList = () => {
                 </View>
             </View>
             <View style={styles.diaryDescBox}>
-                <Image style={styles.diaryImg} source={require('../assets/1.jpg')} />
+                <Image style={styles.diaryImg} source={require('../../assets/1.jpg')} />
                 <Text style={styles.diaryDesc}>일기 여러줄 들어갈 영역</Text>
             </View>
             <View>
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: 16,
   },
   userinfoBox:{
     flexDirection: 'row',
@@ -82,9 +83,11 @@ const styles = StyleSheet.create({
   },
   diaryDesc: {
     fontSize: 16,
+    paddingHorizontal: 16,
   },
   likeBtn: {
       flexDirection: 'row',
+      paddingHorizontal: 16,
   },
   likeCount: {
     marginLeft: 4,
