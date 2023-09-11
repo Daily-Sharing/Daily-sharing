@@ -1,23 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, TouchableOpacity, RefreshControl } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { CheckBox } from 'react-native-elements';
 
-import DailyList from '../component/daily_list';
+import DailyList from '../public/component/daily_list';
+import AfterWriting from '../public/component/afterWritingQuestion';
+import BeforeWriting from '../public/component/beforeWritingQuestion';
 
-const handleCheckboxChange = () => {
-    setFollow(!follow);
-};
 
 function Diary({navigation}) {
     const statusBarHeight = Constants.statusBarHeight;
-    const [follow, setFollow] = useState(false);
+
+    const [refreshing, setRefreshing] = React.useState(false);
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+          setRefreshing(false);
+        }, 2000);
+    }, []);
+
+    const [currentDiary, setCurrentDiary] = useState(false);
+    function arrangeCurrentDiary() {
+        setCurrentDiary(!currentDiary);
+    }
+
+    const [gatherView, setGatherView] = useState(false);
+    function gatherDiaryView() {
+        setGatherView(!gatherView);
+    }
+
     return (
     <SafeAreaProvider style={[styles.container, { paddingTop: statusBarHeight }]}>
-        <ScrollView>
+        <ScrollView refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
             <View style={styles.header}>
               <Text>2023년 4월 21일</Text>
               <View style={styles.BtnBox}>
@@ -29,40 +48,30 @@ function Diary({navigation}) {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={styles.todayBox}>
-                <View style={styles.todayTimeLimit}>
-                    <FontAwesome5 name="clock" size={12} color="#AEA9B1" />
-                    <Text style={{color: '#707070', marginLeft: 4, fontSize: 12,}}>2023년 4월 6일</Text>
-                </View>
-                <Text style={styles.todayQna}>오늘의 질문 들어갈 영역</Text>
-            </View>
+            <AfterWriting />
             <View style={styles.diaryList}>
-                <View style={styles.diaryListBtnBox}>
-                    <View style={styles.diaryListBtnBox}>
-                        <TouchableOpacity >
-                            <View style={styles.diaryListBtn}>
-                                <FontAwesome5 name="star" size={18} color="#474747" />
+                <View style={[styles.rowBox, {paddingHorizontal: 16}]}>
+                    <View style={[styles.rowBox, {gap: 8}]}>
+                        <TouchableOpacity onPress={arrangeCurrentDiary}>
+                            <View style={[styles.diaryListBtn, {gap: 6}]}>
                                 <Text style={styles.diaryListBtnText}>최신순</Text>
+                                <FontAwesome5 name={currentDiary ? "caret-up" : "caret-down"} size={18} color="#474747" />
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.diaryListBtn}>
-                            <View style={styles.diaryListBtn}>
-                                <FontAwesome5 name="user-friends" size={18} color="#474747" />
+                        <TouchableOpacity style={styles.diaryListBtn} onPress={gatherDiaryView}>
+                            <View style={[styles.diaryListBtn, {gap: 6}]}>
                                 <Text style={styles.diaryListBtnText}>모아보기</Text>
+                                <FontAwesome5 name={gatherView ? "caret-up" : "caret-down"} size={18} color="#474747" />
                             </View>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.diaryListBtn}>
                         <View style={styles.diaryListBtn}>
-                            <CheckBox value={follow}/>
+                            <CheckBox value={currentDiary}/>
                             <Text style={styles.diaryListBtnText}>최신순</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <DailyList />
-                <DailyList />
-                <DailyList />
-                <DailyList />
                 <DailyList />
             </View>
         </ScrollView>
@@ -80,8 +89,8 @@ export default Diary;
 
 const styles = StyleSheet.create({
     floatingBtn: {
-        position: 'absolute', // 화면에서 고정
-        bottom: 20, // 아래에서 20만큼 떨어진 위치
+        position: 'absolute',
+        bottom: 20,
         alignSelf: 'center',
         backgroundColor: 'black',
         alignItems: 'center',
@@ -127,10 +136,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     diaryList: {
-        paddingHorizontal: 16,
         marginTop: 14,
     },
-    diaryListBtnBox: {
+    rowBox: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
