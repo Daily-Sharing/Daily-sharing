@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import HorizonalScrollView from '../component/HorizonalScrollView';
+import HorizonalScrollView from '../public/component/HorizonalScrollView';
 function Question() {
   return (
     <View style={{ flex: 1, justifyContent: 'center'}}>

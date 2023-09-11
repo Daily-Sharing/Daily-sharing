@@ -1,8 +1,8 @@
 export const views = {
-  Diary: require('../view/view1').default,
-  Community: require('../view/view2').default,
-  HealthInfo: require('../view/view3').default,
-  MedicalSponsorship: require('../view/view4').default,
-  MyPage: require('../view/view5').default,
+  Diary: require('../view/dailyDiary').default,
+  Community: require('../view/community').default,
+  HealthInfo: require('../view/healthInfo').default,
+  MedicalSponsorship: require('../view/medicalSponsorship').default,
+  MyPage: require('../view/myPage').default,
   Question: require('../view/question').default
 };

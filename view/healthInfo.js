@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
-import * as Head from '../component/head';
 
 function HealthInfo() {
   return (
