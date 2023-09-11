@@ -34,65 +34,60 @@ function Main() {
         name="하루공유"
         component={Diary}
         options={{
-            tabBarIcon: ({ focused, color, size }) => {
-              if(focused){
-                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
-              } else {
-                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
-              }
-            }
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={focused ? require('./assets/favicon.png') : require('./assets/icon.png')}
+                style={{ width: size, height: size }}
+              />
+            )
         }}
       />
       <Tab.Screen
         name="커뮤니티"
         component={Community}
         options={{
-            tabBarIcon: ({ focused, color, size }) => {
-              if(focused){
-                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
-              } else {
-                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
-              }
-            }
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={focused ? require('./assets/favicon.png') : require('./assets/icon.png')}
+                style={{ width: size, height: size }}
+              />
+            )
         }}
       />
       <Tab.Screen
         name="건강정보"
         component={HealthInfo}
         options={{
-            tabBarIcon: ({ focused, color, size }) => {
-              if(focused){
-                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
-              } else {
-                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
-              }
-            }
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={focused ? require('./assets/favicon.png') : require('./assets/icon.png')}
+                style={{ width: size, height: size }}
+              />
+            )
         }}
       />
       <Tab.Screen
         name="의료/후원"
         component={MedicalSponsorship}
         options={{
-            tabBarIcon: ({ focused, color, size }) => {
-              if(focused){
-                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
-              } else {
-                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
-              }
-            }
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={focused ? require('./assets/favicon.png') : require('./assets/icon.png')}
+                style={{ width: size, height: size }}
+              />
+            )
         }}
       />
       <Tab.Screen
         name="내정보"
         component={MyPage}
         options={{
-            tabBarIcon: ({ focused, color, size }) => {
-              if(focused){
-                return <Image source={require('./assets/favicon.png')} style={{width: 24, height: 24}} />
-              } else {
-                return <Image source={require('./assets/icon.png')} style={{width: 24, height: 24}} />
-              }
-            }
+            tabBarIcon: ({ focused, color, size }) => (
+              <Image
+                source={focused ? require('./assets/favicon.png') : require('./assets/icon.png')}
+                style={{ width: size, height: size }}
+              />
+            )
         }}
       />
     </Tab.Navigator>
