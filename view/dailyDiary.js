@@ -6,6 +6,10 @@ import Constants from 'expo-constants';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { CheckBox } from 'react-native-elements';
 
+// style component
+import NaviStyles from '../path/style';
+
+// sub page
 import DailyList from '../public/component/daily_list';
 import AfterWriting from '../public/component/afterWritingQuestion';
 import BeforeWriting from '../public/component/beforeWritingQuestion';
@@ -22,9 +26,11 @@ function Diary({navigation}) {
         }, 2000);
     }, []);
 
-    const [currentDiary, setCurrentDiary] = useState(false);
-    function arrangeCurrentDiary() {
-        setCurrentDiary(!currentDiary);
+    const [followView, setFollowView] = useState(false);
+
+    const [currentView, setCurrentView] = useState(false);
+    function arrangeCurrentView() {
+        setCurrentView(!currentView);
     }
 
     const [gatherView, setGatherView] = useState(false);
@@ -52,10 +58,10 @@ function Diary({navigation}) {
             <View style={styles.diaryList}>
                 <View style={[styles.rowBox, {paddingHorizontal: 16}]}>
                     <View style={[styles.rowBox, {gap: 8}]}>
-                        <TouchableOpacity onPress={arrangeCurrentDiary}>
+                        <TouchableOpacity onPress={arrangeCurrentView}>
                             <View style={[styles.diaryListBtn, {gap: 6}]}>
                                 <Text style={styles.diaryListBtnText}>최신순</Text>
-                                <FontAwesome5 name={currentDiary ? "caret-up" : "caret-down"} size={18} color="#474747" />
+                                <FontAwesome5 name={currentView ? "caret-up" : "caret-down"} size={18} color="#474747" />
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.diaryListBtn} onPress={gatherDiaryView}>
@@ -66,9 +72,8 @@ function Diary({navigation}) {
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.diaryListBtn}>
-                        <View style={styles.diaryListBtn}>
-                            <CheckBox value={currentDiary}/>
-                            <Text style={styles.diaryListBtnText}>최신순</Text>
+                        <View style={[styles.diaryListBtn, {gap: 8}]}>
+                            <CheckBox value='follow' title='팔로우' onPress={() => setFollowView(!followView)} isChecked={followView} />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -148,7 +153,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 8,
     },
-    diaryListBtnText: {
-        marginLeft: 6,
-    },
+//    diaryListBtnText: {
+//        marginLeft: 6,
+//    },
 });
