@@ -364,5 +364,9 @@ export const styles = {
   primary_g24,
   primary_g16,
   primary_g8,
+  bg_base_w,
+  bg_base_bk,
+  bg_gray_scale,
+  bg_primary,
 };
 
