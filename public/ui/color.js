@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 // text colors
+// 기본 베이스 컬러들
 const common_colors = {
   base_w: css`
     color: #FFFFFF;
@@ -47,6 +48,10 @@ const base_w16 = styled.Text`
 const base_w8 = styled.Text`
   ${common_colors.base_w_trans}
   opacity: 0.08;
+`;
+
+const base_bkf = styled.Text`
+  ${common_colors.base_bkf}
 `;
 
 const base_bk85 = styled.Text`
@@ -218,7 +223,7 @@ const bg_base_bk = StyleSheet.create({
     backgroundColor: common_colors.base_bkf,
   },
   base_bk85: {
-    backgroundColor: #1F262D,
+    backgroundColor: '#1F262D',
   },
   base_bk40: {
     backgroundColor: common_colors.base_bk_trans,
@@ -293,51 +298,51 @@ const bg_primary = StyleSheet.create({
   },
   green88: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.88;
+    opacity: 0.88,
   },
   green80: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.80;
+    opacity: 0.80,
   },
   green72: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.72;
+    opacity: 0.72,
   },
   green64: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.64;
+    opacity: 0.64,
   },
   green56: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.56;
+    opacity: 0.56,
   },
   green48: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.48;
+    opacity: 0.48,
   },
   green40: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.40;
+    opacity: 0.40,
   },
   green32: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.32;
+    opacity: 0.32,
   },
   green24: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.24;
+    opacity: 0.24,
   },
   green16: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.16;
+    opacity: 0.16,
   },
   green8: {
     backgroundColor: common_colors.primary_gr,
-    opacity: 0.08;
+    opacity: 0.08,
   },
 });
 
-export const styles = {
+export const Colors = {
   base_wf,
   base_w40,
   base_w32,
