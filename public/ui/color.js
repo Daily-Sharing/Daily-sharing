@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
+// HEX코드 사용 - #컬러코드+투명도
 export const Colors = {
   Base_wf: '#FFFFFF',
-  Base_w40: 'F8F9FA40',
-  Base_w32: 'F8F9FA32',
-  Base_w24: 'F8F9FA24',
-  Base_w16: 'F8F9FA16',
-  Base_w8: 'F8F9FA08',
-  Base_bk: '#000000',
+  Base_w40: '#E1F0FF40',
+  Base_w32: '#E1F0FF32',
+  Base_w24: '#E1F0FF24',
+  Base_w16: '#E1F0FF16',
+  Base_w8: '#E1F0FF08',
+  Base_bkf: '#000000',
   Base_bk85: '#26374785',
   Base_bk40: '#26374740',
   Base_bk32: '#26374732',
