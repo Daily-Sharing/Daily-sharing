@@ -1,9 +1,9 @@
 import commonStyle from '../public/ui/common';
-import buttonStyle from '../public/ui/button';
-import colorStyle from '../public/ui/color';
+import Button from '../public/ui/button';
+import Colors from '../public/ui/color';
 
 export default {
   commonStyle,
-  buttonStyle,
-  colorStyle,
+  Button,
+  Colors,
 };
